@@ -1,0 +1,118 @@
+<!doctype html>
+<html data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payments</title>
+    <script>
+      (() => {
+        const theme = localStorage.getItem('app-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.backgroundColor = theme === 'light' ? '#f6f8fb' : '#0c111c';
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="payments">
+    <div class="app">
+      <div data-sidebar-root></div>
+      <main class="content">
+        <header class="page-header">
+          <h1 class="page-title">Payments</h1>
+          <button class="theme-toggle" type="button" data-theme-toggle>
+            <span class="material-symbols-outlined">routine</span>
+          </button>
+        </header>
+        <div class="notice"></div>
+        <section class="card pad">
+          <div class="toolbar payment-toolbar">
+            <h3 style="margin:0;">Add Payment</h3>
+            <label class="payment-search">
+              <span>Search Order ID</span>
+              <div class="payment-search-row">
+                <input id="paymentSearchOrderId" class="input" type="text" placeholder="Search by ID" />
+                <button id="paymentSearchButton" class="btn btn-sm" type="button" aria-label="Search Order">
+                  <span class="material-symbols-outlined">search</span>
+                </button>
+              </div>
+            </label>
+          </div>
+          <form id="paymentForm" class="stack">
+            <div class="form-grid">
+              <label>
+                Order ID
+                <input id="paymentOrderId" class="input" type="text" readonly />
+              </label>
+              <label>
+                Customer
+                <input id="paymentCustomer" class="input" type="text" readonly />
+              </label>
+              <label>
+                Total Amount
+                <input id="paymentTotalAmount" class="input" type="number" readonly />
+              </label>
+              <label>
+                Paid Amount
+                <input id="paymentPaidAmount" class="input" type="number" readonly />
+              </label>
+              <label>
+                Pending Amount
+                <input id="paymentPendingAmount" class="input" type="number" readonly />
+              </label>
+              <label>
+                Received Amount
+                <input id="paymentAmount" class="input" type="number" min="0" step="0.01" />
+              </label>
+            </div>
+            <button class="btn" type="submit">Add Payment</button>
+          </form>
+        </section>
+
+                <section class="card pad">
+          <div class="toolbar">
+            <h3 style="margin:0;">Order List</h3>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Paid</th>
+                <th>Pending</th>
+              </tr>
+            </thead>
+            <tbody id="paymentOrdersBody"></tbody>
+          </table>
+        </section>
+
+        <section class="card pad">
+          <h3>Payment History</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Order</th>
+                <th>Received Amount</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="paymentHistoryBody"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

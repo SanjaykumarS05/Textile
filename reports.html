@@ -1,0 +1,127 @@
+<!doctype html>
+<html data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reports</title>
+    <script>
+      (() => {
+        const theme = localStorage.getItem('app-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.backgroundColor = theme === 'light' ? '#f6f8fb' : '#0c111c';
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="reports">
+    <div class="app">
+      <div data-sidebar-root></div>
+      <main class="content">
+        <header class="page-header">
+          <h1 class="page-title">Action Reports</h1>
+          <button class="theme-toggle" type="button" data-theme-toggle>
+            <span class="material-symbols-outlined">routine</span>
+          </button>
+        </header>
+        <div class="notice"></div>
+
+        <section class="card pad">
+          <div class="toolbar no-print">
+            <h3 style="margin:0;">Order Report</h3>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn btn-outline" type="button" id="printReport">Print Report</button>
+              <button class="btn btn-outline" type="button" id="exportExcel">Export Excel</button>
+              <button class="btn" type="button" id="exportPdf">Export PDF</button>
+            </div>
+          </div>
+          <div class="form-grid no-print">
+            <label>
+              Status
+              <select id="reportStatus" class="select">
+                <option value="">All</option>
+                <option value="Pending">Pending</option>
+                <option value="Processing">Processing</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </label>
+            <label>
+              Customer
+              <select id="reportCustomer" class="select"></select>
+            </label>
+            <label>
+              Product
+              <select id="reportProduct" class="select"></select>
+            </label>
+            <label>
+              From Date
+              <input id="reportFrom" class="input" type="date" />
+            </label>
+            <label>
+              To Date
+              <input id="reportTo" class="input" type="date" />
+            </label>
+            <label>
+              Order ID
+              <input id="reportOrderId" class="input" type="text" placeholder="Search by ID" />
+            </label>
+          </div>
+          <div class="table-scroll report-table-scroll">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Customer</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>GST Number</th>
+                  <th>Address</th>
+                  <th>Product</th>
+                  <th>SKU</th>
+                  <th>Qty</th>
+                  <th>Unit</th>
+                  <th>Unit Price</th>
+                  <th>Line Total</th>
+                  <th>Order Total</th>
+                </tr>
+              </thead>
+              <tbody id="reportTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- <section class="card pad no-print">
+          <h3>Audit Log (Latest 500)</h3>
+          <div class="table-scroll audit-table-scroll">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Action</th>
+                  <th>Entity</th>
+                  <th>Entity ID</th>
+                  <th>Before</th>
+                  <th>After</th>
+                </tr>
+              </thead>
+              <tbody id="auditTableBody"></tbody>
+            </table>
+          </div>
+        </section> -->
+      </main>
+    </div>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+<!doctype html>
+<html data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ERP Dashboard</title>
+    <script>
+      (() => {
+        const theme = localStorage.getItem('app-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.backgroundColor = theme === 'light' ? '#f6f8fb' : '#0c111c';
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="dashboard">
+    <div class="app">
+      <div data-sidebar-root></div>
+      <main class="content">
+        <header class="page-header">
+          <h1 class="page-title">Dashboard</h1>
+          <button class="theme-toggle" type="button" data-theme-toggle>
+            <span class="material-symbols-outlined">routine</span>
+          </button>
+        </header>
+        <div class="notice"></div>
+        <section class="kpi-grid">
+          <article class="card pad kpi-link" data-href="orders-track.html">
+            <p class="kpi-label">Total Orders</p>
+            <div class="kpi-value" id="statOrders">0</div>
+            <span class="material-symbols-outlined kpi-icon icon-orders">receipt_long</span>
+          </article>
+          <article class="card pad kpi-link" data-href="payment.html">
+            <p class="kpi-label">Total Revenue</p>
+            <div class="kpi-value" id="statRevenue">&#8377;0</div>
+            <span class="material-symbols-outlined kpi-icon icon-revenue">currency_rupee</span>
+          </article>
+          <article class="card pad kpi-link" data-href="customers-list.html">
+            <p class="kpi-label">Customers</p>
+            <div class="kpi-value" id="statCustomers">0</div>
+            <span class="material-symbols-outlined kpi-icon icon-customers">groups</span>
+          </article>
+          <article class="card pad kpi-link" data-href="products.html">
+            <p class="kpi-label">Low Stock</p>
+            <div class="kpi-value" id="statLowStock">0</div>
+            <span class="material-symbols-outlined kpi-icon icon-low-stock">warning</span>
+          </article>
+        </section>
+
+        <section class="stack">
+          <article class="card pad">
+            <h3>Recent Orders</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentOrders"></tbody>
+            </table>
+          </article>
+          <article class="card pad">
+            <h3>Low Stock Alerts</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>SKU</th>
+                  <th>Stock</th>
+                </tr>
+              </thead>
+              <tbody id="lowStockList"></tbody>
+            </table>
+          </article>
+        </section>
+        <p class="page-footer">All activity is tracked in reports.</p>
+      </main>
+    </div>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

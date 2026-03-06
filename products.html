@@ -1,0 +1,53 @@
+<!doctype html>
+<html data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List</title>
+    <script>
+      (() => {
+        const theme = localStorage.getItem('app-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.backgroundColor = theme === 'light' ? '#f6f8fb' : '#0c111c';
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="products-list">
+    <div class="app">
+      <div data-sidebar-root></div>
+      <main class="content">
+        <header class="page-header">
+          <h1 class="page-title">Product List</h1>
+          <button class="theme-toggle" type="button" data-theme-toggle>
+            <span class="material-symbols-outlined">routine</span>
+          </button>
+        </header>
+        <div class="notice"></div>
+
+        <section class="card pad">
+          <div class="toolbar">
+            <h3 style="margin:0;">Product List</h3>
+            <div class="list-search">
+              <input id="productSearchInput" class="input" type="text" placeholder="Search by Name or SKU" />
+              <button id="productSearchBtn" class="btn btn-sm" type="button" aria-label="Search products">
+                <span class="material-symbols-outlined">search</span>
+              </button>
+            </div>
+          </div>
+          <div id="productsCardList" class="product-record-grid"></div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

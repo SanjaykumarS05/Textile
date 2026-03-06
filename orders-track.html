@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order List & Track</title>
+    <script>
+      (() => {
+        const theme = localStorage.getItem('app-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.backgroundColor = theme === 'light' ? '#f6f8fb' : '#0c111c';
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="orders-track">
+    <div class="app">
+      <div data-sidebar-root></div>
+      <main class="content">
+        <header class="page-header">
+          <h1 class="page-title">Order List & Track</h1>
+          <button class="theme-toggle" type="button" data-theme-toggle>
+            <span class="material-symbols-outlined">routine</span>
+          </button>
+        </header>
+        <div class="notice"></div>
+
+        <section class="stack">
+          <article class="card pad">
+            <!-- <div class="toolbar no-print">
+              <h3 style="margin:0;">Orders List</h3>
+              <button class="btn btn-outline" type="button" id="printOrders">Print Report</button>
+            </div> -->
+            <div class="form-grid no-print">
+              <label>
+                Status
+                <select id="filterStatus" class="select">
+                  <option value="">All</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Processing">Processing</option>
+                  <option value="Shipped">Shipped</option>
+                  <option value="Delivered">Delivered</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+              </label>
+              <label>
+                Customer
+                <select id="filterCustomer" class="select"></select>
+              </label>
+              <label>
+                From Date
+                <input id="filterFrom" class="input" type="date" />
+              </label>
+              <label>
+                To Date
+                <input id="filterTo" class="input" type="date" />
+              </label>
+              <label>
+                Order ID
+                <input id="filterSearch" class="input" type="text" placeholder="Search by ID" />
+              </label>
+            </div>
+            <br>
+            <div id="ordersCardList" class="order-record-grid"></div>
+          </article>
+
+          <article class="card pad">
+            <h3>Order Tracking</h3>
+            <div id="trackingCardList" class="tracking-record-grid"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+

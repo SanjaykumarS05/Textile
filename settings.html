@@ -1,0 +1,105 @@
+<!doctype html>
+<html data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+    <script>
+      (() => {
+        const theme = localStorage.getItem('app-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.backgroundColor = theme === 'light' ? '#f6f8fb' : '#0c111c';
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="settings">
+    <div class="app">
+      <div data-sidebar-root></div>
+      <main class="content">
+        <header class="page-header">
+          <h1 class="page-title">Settings</h1>
+          <button class="theme-toggle" type="button" data-theme-toggle>
+            <span class="material-symbols-outlined">routine</span>
+          </button>
+        </header>
+        <div class="notice"></div>
+
+        <section class="card pad">
+          <h3>Settings</h3>
+          <form id="settingsForm" class="stack">
+            <div class="settings-radio-toggle" role="radiogroup" aria-label="Settings Section">
+              <label class="settings-radio-option">
+                <input type="radio" name="settingsSection" value="profile" checked />
+                <span>Profile</span>
+              </label>
+              <label class="settings-radio-option">
+                <input type="radio" name="settingsSection" value="low-stock" />
+                <span>Low Stock</span>
+              </label>
+            </div>
+
+            <div class="settings-section active" data-settings-section="profile">
+              <h3 style="margin:0;">Profile</h3>
+              <div class="form-grid">
+                <label>
+                  Name
+                  <input id="settingsName" class="input" type="text" />
+                </label>
+                <label>
+                  Email
+                  <input id="settingsEmail" class="input" type="email" />
+                </label>
+                <label>
+                  Phone
+                  <input id="settingsPhone" class="input" type="text" />
+                </label>
+                <label>
+                  Current Password
+                  <input id="settingsCurrentPassword" class="input" type="password" />
+                </label>
+                <label>
+                  New Password
+                  <input id="settingsNewPassword" class="input" type="password" />
+                </label>
+                <label>
+                  Confirm New Password
+                  <input id="settingsConfirmPassword" class="input" type="password" />
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section" data-settings-section="low-stock">
+              <h3 style="margin:0;">Low Stock Alert</h3>
+              <div class="form-grid">
+                <label>
+                  Meter Low Stock Count
+                  <input id="meterLowStockCount" class="input" type="number" min="0" step="0.01" />
+                </label>
+                <label>
+                  Pieces Low Stock Count
+                  <input id="piecesLowStockCount" class="input" type="number" min="0" step="1" />
+                </label>
+                <label>
+                  Kgs Low Stock Count
+                  <input id="kgsLowStockCount" class="input" type="number" min="0" step="0.01" />
+                </label>
+              </div>
+            </div>
+            <button class="btn" type="submit">Save Settings</button>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

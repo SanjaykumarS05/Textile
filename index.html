@@ -1,0 +1,45 @@
+<!doctype html>
+<html data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textile ERP Login</title>
+    <script>
+      (() => {
+        const theme = localStorage.getItem('app-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.backgroundColor = theme === 'light' ? '#f6f8fb' : '#0c111c';
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="login-page" data-page="login">
+    <div class="login-card">
+      <div class="theme-toggle-row">
+        <button class="theme-toggle" type="button" data-theme-toggle>
+            <span class="material-symbols-outlined">routine</span>
+          </button>
+      </div>
+      <h1>Textile ERP</h1>
+      <p class="muted">Single-user access. Use your local credentials to continue.</p>
+      <form id="login-form">
+        <label>
+          Username
+          <input class="input" type="text" id="username" name="username" />
+        </label>
+        <label>
+          Password
+          <input class="input" type="password" id="password" name="password" />
+        </label>
+        <button class="btn" type="submit">Login</button>
+      </form>
+      <p id="login-message" class="muted"></p>
+    </div>
+    <script type="module" src="src/renderer.js"></script>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
+
+
+
